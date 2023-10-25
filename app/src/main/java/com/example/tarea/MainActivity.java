@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.MediaController;
+import android.widget.VideoView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -19,20 +20,21 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     GoogleMap gMap;
 
+    private VideoView video;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         SupportMapFragment mFrag = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mFrag.getMapAsync(this);
-        //VIDEO POR DRIVE
-//        video = findViewById(R.id.videoView);
-//        String url = "https://drive.google.com/uc?export=download&id=15h-OQsLdoh9-Lv11TdWLtOSjWwYnjFfl";
-//        MediaController mController = new MediaController(this);
-//        video.setMediaController(mController);
-//        mController.setAnchorView(video);
-//        video.setVideoURI(Uri.parse(url));
-//        video.start();
+
+        video = findViewById(R.id.video);
+        String url = "https://drive.usercontent.google.com/download?id=1TsDwEOa6nzzhnposgWr8xXrBbAXPl50e&export=download&authuser=0&confirm=t&uuid=0cc3df26-ba62-4ee0-ae94-0eeb82fe402c&at=APZUnTW-I_PHPlnnFNDsBU3Mxj2p:1698276867590";
+        MediaController mController = new MediaController(this);
+        video.setMediaController(mController);
+        mController.setAnchorView(video);
+        video.setVideoURI(Uri.parse(url));
+        video.start();
 
     }
     @Override
